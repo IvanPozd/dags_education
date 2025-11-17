@@ -2,7 +2,7 @@ from airflow.providers.standard.operators.bash import BashOperator
 from airflow.providers.standard.operators.python import PythonOperator
 from airflow.sdk import DAG
 
-from education.helpers.files import get_json_data_from_source
+from .helpers.files import get_json_data_from_source
 
 with DAG(
     dag_id="download_rocket_launches",
