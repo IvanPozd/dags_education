@@ -1,15 +1,8 @@
-import json
-
 from airflow.providers.standard.operators.bash import BashOperator
 from airflow.providers.standard.operators.python import PythonOperator
 from airflow.sdk import DAG
 
-
-def read_launches_file():
-    with open("/tmp/launches.json") as json_file:
-        content = json.load(json_file)
-        print(content)
-
+from education.helpers.files import get_json_data_from_source
 
 with DAG(
     dag_id="download_rocket_launches",
@@ -22,7 +15,7 @@ with DAG(
 
     read = PythonOperator(
         task_id="read_launches_file_task",
-        python_callable=read_launches_file,
+        python_callable=lambda: print(get_json_data_from_source("/tmp/launches.json")),
     )
 
     download >> read
