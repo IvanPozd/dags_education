@@ -1,8 +1,14 @@
+import json
+
 from airflow.providers.standard.operators.bash import BashOperator
 from airflow.providers.standard.operators.python import PythonOperator
 from airflow.sdk import DAG
 
-from .helpers.files import get_json_data_from_source
+
+def get_json_data_from_source(source_file_path: str, mode: str = "r"):
+    with open(source_file_path, mode=mode) as json_file:
+        return json.load(json_file)
+
 
 with DAG(
     dag_id="download_rocket_launches",
