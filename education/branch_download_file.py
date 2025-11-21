@@ -46,7 +46,6 @@ with DAG(
     check_status = BranchPythonOperator(
         task_id="check_download_status",
         python_callable=check_download_status,
-        provide_context=True,
     )
 
     download_file = PythonOperator(
