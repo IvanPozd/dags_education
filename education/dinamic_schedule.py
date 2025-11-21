@@ -50,11 +50,11 @@ with DAG(
     download_file = PythonOperator(
         task_id="download_data_file",
         python_callable=mark_file_downloaded,
-        provide_context=True,
     )
 
     process_data = BashOperator(
-        task_id="process_data", bash_command='echo "Обработка данных..." && sleep 30'
+        task_id="process_data",
+        bash_command='echo "Обработка данных..." && sleep 30',
     )
 
     # Если файл уже скачан - пропускаем скачивание
