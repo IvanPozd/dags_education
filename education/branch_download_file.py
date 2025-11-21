@@ -30,6 +30,8 @@ def check_download_status(**context):
     else:
         # Файл скачан - используем медленное расписание
         Variable.set("etl_processing_schedule", "*/30 6,10,14,20 * * *")
+        Variable.set("file_download_status", "not_downloaded")
+
         return "process_file_task"
 
 
