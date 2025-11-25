@@ -36,7 +36,7 @@ with DAG(
     schedule=current_schedule,  # Динамическое расписание
     start_date=datetime(2024, 1, 1),
     catchup=False,
-    tags=["etl", "production"],
+    tags=["GitHub"],
 ) as dag:
     # Сенсор проверяет, был ли файл уже скачан
     check_download_sensor = FileSensor(

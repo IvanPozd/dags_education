@@ -44,6 +44,7 @@ with DAG(
     schedule=etl_processing_schedule,
     start_date=datetime(2024, 1, 1),
     catchup=False,
+    tags=["GitHub"],
 ) as dag:
     check_status = BranchPythonOperator(
         task_id="check_download_status",

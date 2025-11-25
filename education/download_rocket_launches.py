@@ -13,6 +13,7 @@ def get_json_data_from_source(source_file_path: str, mode: str = "r"):
 with DAG(
     dag_id="download_rocket_launches",
     schedule="@hourly",
+    tags=["GitHub"],
 ) as dag:
     download = BashOperator(
         task_id="download_launches_task",
